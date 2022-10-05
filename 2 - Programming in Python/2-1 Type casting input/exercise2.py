@@ -8,16 +8,12 @@
 #
 #   Your total bill is $ 9.74
 
-def input_to_cents(dollars: str) -> int:
-    return int(float(dollars) * 100)
-
-
 # Modify the line below
-coffee = input_to_cents(input('1 coffee @: $ '))
+coffee = float(input('1 coffee @: $ '))
 # Modify the line below
-sandwich = input_to_cents(input('1 sandwich @: $ '))
+sandwich = float(input('1 sandwich @: $ '))
 # Modify the line below
-cake = input_to_cents(input('1 cake @: $ '))
+cake = float(input('1 cake @: $ '))
 
 bill_total = coffee + sandwich + cake
 
