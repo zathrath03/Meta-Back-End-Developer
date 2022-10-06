@@ -31,7 +31,7 @@ def calculate_subtotal(order):
     for item in order:
         subtotal += item["price"]
 
-    return subtotal
+    return round(subtotal, 2)
 
 
 def calculate_tax(subtotal):
