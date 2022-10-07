@@ -1,3 +1,6 @@
+import collections
+
+
 def read_file(file_name):
     """ Reads in a file.
 
@@ -14,8 +17,10 @@ def read_file(file_name):
         string: contents of the given file.
     """
     # WRITE SOLUTION HERE
-
-    raise NotImplementedError()
+    with open(file_name) as file:
+        contents = file.read()
+    print(contents)
+    return contents
 
 
 def read_file_into_list(file_name):
@@ -33,8 +38,14 @@ def read_file_into_list(file_name):
         list: a list where each element is a line in the file.
     """
     # WRITE SOLUTION HERE
-
-    raise NotImplementedError()
+    lines = []
+    with open(file_name) as f:
+        # lines = f.readlines() would be the proper way of doing this
+        # however, the implementation directions specify reading each
+        # line and appending it to the list
+        for line in f:
+            lines.append(line)
+    return lines
 
 
 def write_first_line_to_file(file_contents, output_filename):
@@ -53,8 +64,9 @@ def write_first_line_to_file(file_contents, output_filename):
         output_filename: the name of the file to be written to
     """
     # WRITE SOLUTION HERE
-
-    raise NotImplementedError()
+    line = file_contents.partition('\n')[0]
+    with open(output_filename, 'w') as f:
+        f.write(line)
 
 
 def read_even_numbered_lines(file_name):
@@ -72,8 +84,13 @@ def read_even_numbered_lines(file_name):
         list: a list of the even-numbered lines of the file
     """
     # WRITE SOLUTION HERE
-
-    raise NotImplementedError()
+    lines = []
+    with open(file_name) as f:
+        for n, line in enumerate(f, start=1):
+            if n & 1:
+                continue
+            lines.append(line)
+    return lines
 
 
 def read_file_in_reverse(file_name):
@@ -91,9 +108,20 @@ def read_file_in_reverse(file_name):
     Returns:
         list: list of the lines of the file in reverse order.
     """
-    # WRITE SOLUTION HERE
+    # The way I would implement it if there wasn't a specific implementation required
+    # with open(file_name) as f:
+    #     lines = f.readlines()
+    # lines.reverse()
+    # return lines
 
-    raise NotImplementedError()
+    # WRITE SOLUTION HERE
+    lines = collections.deque()
+    with open(file_name) as f:
+        for line in f:
+            lines.appendleft(line)
+    lines = list(lines)
+    print(lines)
+    return lines
 
 
 '''
@@ -104,10 +132,10 @@ Feel free to uncomment/modify/add to them as you wish.
 
 def main():
     file_contents = read_file("sampletext.txt")
-    # print(read_file_into_list("sampletext.txt"))
-    # write_first_line_to_file(file_contents, "online.txt")
-    # print(read_even_numbered_lines("sampletext.txt"))
-    # print(read_file_in_reverse("sampletext.txt"))
+    print(read_file_into_list("sampletext.txt"))
+    write_first_line_to_file(file_contents, "online.txt")
+    print(read_even_numbered_lines("sampletext.txt"))
+    print(read_file_in_reverse("sampletext.txt"))
 
 
 if __name__ == "__main__":
