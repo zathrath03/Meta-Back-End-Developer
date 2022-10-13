@@ -29,7 +29,7 @@ def create_dict(name: str, age: str, title: str) -> dict:
     return {"first_name": name, "age": int(age), "title": title}
 
 
-def write_json_to_file(json_obj, output_file):
+def write_json_to_file(json_obj: str, output_file: str) -> None:
     """ Write json string to file
 
     [IMPLEMENT ME]
@@ -41,8 +41,8 @@ def write_json_to_file(json_obj, output_file):
         output_file: the file the json is being written to
     """
     # WRITE SOLUTION HERE
-
-    raise NotImplementedError()
+    with open(output_file, 'w') as f:
+        f.write(json_obj)
 
 
 def main():
@@ -60,7 +60,7 @@ def main():
     # WRITE YOUR CODE BY MODIFYING THE LINE BELOW
     # In the line below replace the None keyword with your code.
     # The format should look like: variable = json.dumps(dict)
-    json_object = None
+    json_object = json.dumps(employee_dict)
     print("json_object: " + str(json_object))
 
     # Write out the json object to file
