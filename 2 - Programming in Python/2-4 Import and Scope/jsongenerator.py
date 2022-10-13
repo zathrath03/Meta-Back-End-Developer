@@ -4,9 +4,11 @@ Import statements:
     2. From employee.py, import the details function and the employee_name, age, title variables
 '''
 # WRITE IMPORT STATEMENTS HERE
+import json
+from employee import details, employee_name, age, title
 
 
-def create_dict(name, age, title):
+def create_dict(name: str, age: str, title: str) -> dict:
     """ Creates a dictionary that stores an employee's information
 
     [IMPLEMENT ME]
@@ -24,8 +26,7 @@ def create_dict(name, age, title):
                title - string)
     """
     # WRITE SOLUTION HERE
-
-    raise NotImplementedError()
+    return {"first_name": name, "age": int(age), "title": title}
 
 
 def write_json_to_file(json_obj, output_file):
